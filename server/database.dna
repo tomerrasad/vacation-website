@@ -1,0 +1,35 @@
+create database vacations;
+use vacations;
+create table users(
+id int auto_increment,
+isadmin boolean,
+fname varchar(255),
+lname varchar(255),
+username varchar(255) unique key,
+password text(255),
+primary key(id)
+);
+create table vacation(
+id int auto_increment,
+place varchar(255),
+tripdescription varchar(255),
+fromdate date,
+todate date,
+price int,
+img varchar(999),
+primary key(id)
+);
+create table brige(
+userid int,
+vacationid int,
+foreign key (userid) references users(id),
+foreign key (vacationid) references vacation(id) on delete cascade
+);
+insert into users(isadmin,fname,lname,username,password) VALUES (true, 'yosi', 'yosi', 'yosi', '$2b$10$zLzO9OUAcUy2nNIInqiRI.hAkqT11pW0CxM0SNH2omFkdofzKKTEO');
+
+
+----------------------------------------------------------------------------------------------------------
+admin:{
+    username:yosi
+    password:1234
+}
